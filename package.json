@@ -1,0 +1,30 @@
+{
+  "name": "ecrecover-demo",
+  "version": "1.0.0",
+  "description": "example contracts using ecrecover",
+  "main": "truffle.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/destrys/ecrecover-demo.git"
+  },
+  "keywords": [
+    "ethereum",
+    "solidity",
+    "multisig",
+    "trezor",
+    "ledger"
+  ],
+  "author": "Destry Saul <destry@unchained-capital.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/destrys/ecrecover-demo/issues"
+  },
+  "homepage": "https://github.com/destrys/ecrecover-demo#readme",
+  "dependencies": {
+    "truffle": "^4.1.14",
+    "ganache-cli": "^6.1.8"
+  }
+}
