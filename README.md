@@ -6,6 +6,6 @@ Demos of ethereum contracts that use ecrecover
 Updates coming, PRs welcome.
 
 ```
-make install
+make dependencies
 make test
 ```
