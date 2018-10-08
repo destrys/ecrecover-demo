@@ -11,10 +11,10 @@ function parse_signature(signature) {
     let r = "0x" + signature.substring(2,66);
     let s = "0x" + signature.substring(66,130);
     let v = "0x" + signature.substring(130,132);
-    //console.log("Signature: ",signature);
-    //console.log("R: ", r);
-    //console.log("S: ", s);
-    //console.log("V: ", v);
+    console.log("Signature: ",signature);
+    console.log("R: ", r);
+    console.log("S: ", s);
+    console.log("V: ", v);
     return {
         r: r,
         s: s,
