@@ -7,15 +7,15 @@ contract KillSwitch {
     bool public is_dead = false;
     uint256 public things_done;
 
-    constructor(address killer) public {
+    constructor(address _killer) public {
         owner = msg.sender;
-        killer = killer;
+        killer = _killer;
     }
 
     function kill(uint8 v, bytes32 r, bytes32 s) public {
         // require(msg.sender == owner)
         bytes memory prefix = "\x19Ethereum Signed Message:\n20";
-        bytes32 message = keccak256(abi.encodePacked(prefix,this.address));
+        bytes32 message = keccak256(abi.encodePacked(prefix,this));
 
         address signer = ecrecover(message, v+27, r, s);
 

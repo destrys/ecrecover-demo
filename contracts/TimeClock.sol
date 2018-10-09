@@ -5,7 +5,7 @@ contract TimeClock {
     mapping(address => bool) private workers;
     mapping(address => bool) private clockedIn;
     mapping(address => uint64) private lastClockedIn;
-    mapping(address => uint64) private lastClockedOut
+    mapping(address => uint64) private lastClockedOut;
     
     constructor(address firstWorker) public {
         workers[firstWorker] = true;
@@ -18,7 +18,7 @@ contract TimeClock {
 
         require(blockIn < block.number);
         
-        signer = getSigner(blockIn, v, r, s);
+        address signer = getSigner(blockIn, v, r, s);
 
         require(workers[signer]);
         require(!clockedIn[signer]);
@@ -33,11 +33,11 @@ contract TimeClock {
 
         require(blockOut < block.number);
         
-        signer = getSigner(blockOut, v, r, s);
+        address signer = getSigner(blockOut, v, r, s);
 
         require(workers[signer]);
         require(clockedIn[signer]);
-        require(blockIn > lastClockedIn[signer]);
+        require(blockOut > lastClockedIn[signer]);
 
         emit ClockOut(signer, blockOut);
         clockedIn[signer] = false;

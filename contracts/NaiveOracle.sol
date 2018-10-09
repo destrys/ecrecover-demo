@@ -5,7 +5,7 @@ contract NaiveOracle {
     address private _oracle;
     address private _raidersWin;
     address private _raidersLose;
-    int8    private _gameId;
+    uint8    private _gameId;
     
     
     constructor(address oracle, address raidersWin, address raidersLose, uint8 gameId) public {
@@ -17,17 +17,17 @@ contract NaiveOracle {
 
     function register(uint8 v, bytes32 r, bytes32 s, uint8 raidersScore, uint8 otherScore) public {
 
-        signer = getSigner(v, r, s, raiderScore, otherScore);
-        require(signer == oracle);
+        address signer = getSigner(v, r, s, raidersScore, otherScore);
+        require(signer == _oracle);
         
-        if (raiderScore > otherScore) {
-            _raidersWin.transfer(this.balance);
+        if (raidersScore > otherScore) {
+            _raidersWin.transfer(address(this).balance);
         } else {
-            _raidersLose.transfer(this.balance);
+            _raidersLose.transfer(address(this).balance);
         }
     }
     
-    function getSigner(uint8 v, bytes32 r, bytes32 s, raidersScore, otherScore)
+    function getSigner(uint8 v, bytes32 r, bytes32 s, uint8 raidersScore, uint8 otherScore)
         private view returns (address) {
 
         bytes32 hashedUnsignedMessage = keccak256(abi.encodePacked(_gameId, raidersScore, otherScore));

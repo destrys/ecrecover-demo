@@ -22,8 +22,8 @@ contract MultiSig2of2 {
 
         require(address(this).balance >= value);
         
-        address1 = getSigner(destination, value, v1, r1, s1);
-        address2 = getSigner(destination, value, v2, r2, s2);
+        address address1 = getSigner(destination, value, v1, r1, s1);
+        address address2 = getSigner(destination, value, v2, r2, s2);
         require(address1 == signer1);
         require(address2 == signer2);
         

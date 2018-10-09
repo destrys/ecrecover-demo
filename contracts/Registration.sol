@@ -11,7 +11,7 @@ contract Registration {
 
     function register(uint8 v, bytes32 r, bytes32 s) public {
         
-        signer = getSigner(v, r, s);
+        address signer = getSigner(v, r, s);
 
         require(signer == authorizer);
 
